@@ -45,22 +45,22 @@
             </div>
             <div class="right">
                 <label>
-                    <input type="radio" name="nodule" value="1"> Tarczyca bez zmian ogniskowych
+                    <input type="radio" name="nodule" value="1" onclick="blockFeatures()"> Tarczyca bez zmian ogniskowych
                 </label><br>
                 <label>
-                    <input type="radio" name="nodule" value="2.1"> Zmiana ogniskowa bezechowa płynowa
+                    <input type="radio" name="nodule" value="2.1" onclick="unblockFeatures()"> Zmiana ogniskowa bezechowa płynowa
                 </label><br>
                 <label>
-                    <input type="radio" name="nodule" value="2.2"> Zmiana ogniskowa o strukturze gąbczastej typu „plastra miodu”
+                    <input type="radio" name="nodule" value="2.2" onclick="unblockFeatures()"> Zmiana ogniskowa o strukturze gąbczastej typu „plastra miodu”
                 </label><br>
                 <label>
-                    <input type="radio" name="nodule" value="3"> Zmiana ogniskowa normoechogeniczna
+                    <input type="radio" name="nodule" value="3" onclick="unblockFeatures()"> Zmiana ogniskowa normoechogeniczna
                 </label><br>
                 <label>
-                    <input type="radio" name="nodule" value="3"> Zmiana ogniskowa hiperechogeniczna
+                    <input type="radio" name="nodule" value="3" onclick="unblockFeatures()"> Zmiana ogniskowa hiperechogeniczna
                 </label><br>
                 <label>
-                    <input type="radio" name="nodule" value="4"> Zmiana ogniskowa hipoechogeniczna
+                    <input type="radio" name="nodule" value="4" onclick="unblockFeatures()"> Zmiana ogniskowa hipoechogeniczna
                 </label>
             </div>
         </div>
@@ -103,6 +103,9 @@
                 </label><br>
                 <label>
                     <input type="checkbox" name="features" value="5"> Ekspansja pozatarczycowa
+                </label><br>
+                <label>
+                    <input type="checkbox" name="features" value="5"> Głęboka hipoechogeniczność
                 </label>
             </div>
         </div>
@@ -118,10 +121,50 @@
 
     <div class="centered">
         <img src="logo-PWr.png" alt="PWr logo" width="70px">
-        <p>Application made by Wiktor Sadowy and Tomasz Hałas we współpracy z dr. Tomaszem Tomkalskim<br>© 2024 thyroID</p>
+        <img src="logo_pse.jpeg" alt="PSE logo" width="160px">
+
+        <p>Made by Wiktor Sadowy & Tomasz Hałas, Department of Artificial Intelligence. Idea and Cooperation:Tomasz Tomkalski<br>© 2024 thyroID</p>
     </div>
     
+    <div class="centered">
+        <p>Jarząb B, Dedecjus M, Lewiński A, Adamczewski Z, Bakuła-Zalewska E, Bałdys-Waligórska A, Barczyński M, Biskup-Frużyńska M, Bobek-Billewicz B, Bossowski A, Buziak-Bereza M, Chmielik E, Czarniecka A, Czepczyński R, Ćwikła J, Dobruch-Sobczak K, Dzięcioł J, Gawlik A, Gawrychowski J, Handkiewicz-Junak D, Harasymczuk J, Hubalewska-Dydejczyk A, Januszkiewicz-Caulier J, Jarząb M, Kaczka K, Kalemba M, Kamiński G, Karbownik-Lewińska M, Kawecki A, Kluczewska-Gałka A, Kolasińska-Ćwikła A, Kołton M, Konturek A, Kos-Kudła B, Kotecka-Blicharz A, Kowalska A, Krajewska J, Kram A, Królicki L, Kukulska A, Kusiński M, Kuzdak K, Lange D, Ledwon A, Małecka-Tendera E, Mańkowski P, Migda B, Niedziela M, Oczko-Wojciechowska M, Polnik D, Pomorski L, Ruchała M, Samborski K, Skowrońska-Szcześniak A, Stanek-Widera A, Stobiecka E, Stojčev Z, Suchorzepka-Simek M, Syrenicz A, Szczepanek-Parulska E, Trofimiuk-Müldner M, Tysarowski A, Wygoda A, Zajkowska K, Zembala-Nożyńska E, Żyłka A. Diagnosis and treatment of thyroid cancer in adult patients - Recommendations of Polish Scientific Societies and the National Oncological Strategy. 2022 Update [Diagnostyka i leczenie raka tarczycy u chorych dorosłych - Rekomendacje Polskich Towarzystw Naukowych oraz Narodowej Strategii Onkologicznej. Aktualizacja na rok 2022]. Endokrynol Pol. 2022;73(2):173-300. doi: 10.5603/EP.a2022.0028. PMID: 35593680.</p>
+
+    </div>
+
     <script>
+
+        function blockFeatures() {
+
+            var noduleOptions = document.getElementsByName("nodule");
+            var disable = false;
+            for (var i = 0; i < noduleOptions.length; i++) {
+                if (noduleOptions[i].checked && noduleOptions[i].value == "1") {
+                    disable = true;
+                    break;
+                }
+            }
+
+            let form = document.getElementById('tiradsForm');
+            let checkboxes = form.elements['features']
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].disabled = disable;
+                if (disable) {
+                    checkboxes[i].checked = false;
+                }
+            }
+        }
+
+        function unblockFeatures() {
+
+            let form = document.getElementById('tiradsForm');
+            let checkboxes = form.elements['features']
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].disabled = false;
+            }
+        }
+
         function calculateCategory() {
             let form = document.getElementById('tiradsForm');
             let nodule = parseFloat(form.elements['nodule'].value) || 0;
@@ -181,10 +224,10 @@ function gettext(category, type) {
             }
             break;
         case 3:
-            resultText = 'Niskie ryzyko złośliwości: 2–4%.<br>BACC Tarczycy gdy ≥ 20 mm.';
+            resultText = 'Niskie ryzyko złośliwości: 2–4%.<br>BACC Tarczycy gdy ≥ 20 mm. <br> Można rozważyć bacc przy mniejszym wymiarze zmiany.';
             break;
         case 4:
-            resultText = 'Pośrednie ryzyko złośliwości 6–17%.<br>BACC Tarczycy gdy ≥ 15 mm.';
+            resultText = 'Pośrednie ryzyko złośliwości 6–17%.<br>BACC Tarczycy gdy ≥ 15 mm. <br> Można rozważyć bacc przy mniejszym wymiarze zmiany.';
             break;
         case 5:
             resultText = 'Wysokie ryzyko złośliwości >26%.<br>BACC Tarczycy gdy ≥ 5 mm.';
