@@ -45,7 +45,7 @@
             </div>
             <div class="right">
                 <label>
-                    <input type="radio" name="nodule" value="1" onclick="blockFeatures()"> Tarczyca bez zmian ogniskowych
+                    <input type="radio" name="nodule" value="1" onclick="blockFeatures()" checked> Tarczyca bez zmian ogniskowych
                 </label><br>
                 <label>
                     <input type="radio" name="nodule" value="2.1" onclick="unblockFeatures()"> Zmiana ogniskowa bezechowa płynowa
@@ -70,7 +70,7 @@
             </div>
             <div class="right">
                 <label>
-                    <input type="radio" name="shape" value="0"> Kształt owalny lub okrągły
+                    <input type="radio" name="shape" value="0" checked> Kształt owalny lub okrągły
                 </label><br>
                 <label>
                     <input type="radio" name="shape" value="5"> Kształt nieregularny
@@ -83,7 +83,7 @@
             </div>
             <div class="right">
                 <label>
-                    <input type="radio" name="margins" value="0"> Granice/brzegi równe
+                    <input type="radio" name="margins" value="0" checked> Granice/brzegi równe
                 </label><br>
                 <label>
                     <input type="radio" name="margins" value="5"> Granice/brzegi nierówne
@@ -96,21 +96,21 @@
             </div>
             <div class="right">
                 <label>
-                    <input type="checkbox" name="features" value="5"> Orientacja nierównoległa
+                    <input type="checkbox" name="features" value="5" disabled> Orientacja nierównoległa
                 </label><br>
                 <label>
-                    <input type="checkbox" name="features" value="5"> Mikrozwapnienia
+                    <input type="checkbox" name="features" value="5" disabled> Mikrozwapnienia
                 </label><br>
                 <label>
-                    <input type="checkbox" name="features" value="5"> Ekspansja pozatarczycowa
+                    <input type="checkbox" name="features" value="5" disabled> Ekspansja pozatarczycowa
                 </label><br>
                 <label>
-                    <input type="checkbox" name="features" value="5"> Głęboka hipoechogeniczność
+                    <input type="checkbox" name="features" value="5" disabled> Głęboka hipoechogeniczność
                 </label>
             </div>
         </div>
         <div class="centered">
-            <button type="button" onclick="calculateCategory()">Calculate Category</button>
+            <button type="button" onclick="calculateCategory()">Oblicz kategorię</button>
         </div>
     </form>
 
@@ -123,12 +123,14 @@
         <img src="logo-PWr.png" alt="PWr logo" width="70px">
         <img src="logo_pse.jpeg" alt="PSE logo" width="160px">
 
-        <p>Made by Wiktor Sadowy & Tomasz Hałas, Department of Artificial Intelligence. Idea and Cooperation:Tomasz Tomkalski<br>© 2024 thyroID</p>
+        <p>Made by Wiktor Sadowy & Tomasz Hałas, Department of Artificial Intelligence. Idea and Cooperation: Tomasz Tomkalski, Department of Medicine<br>© 2024 thyroID</p>
     </div>
     
-    <div class="centered">
-        <p>Jarząb B, Dedecjus M, Lewiński A, Adamczewski Z, Bakuła-Zalewska E, Bałdys-Waligórska A, Barczyński M, Biskup-Frużyńska M, Bobek-Billewicz B, Bossowski A, Buziak-Bereza M, Chmielik E, Czarniecka A, Czepczyński R, Ćwikła J, Dobruch-Sobczak K, Dzięcioł J, Gawlik A, Gawrychowski J, Handkiewicz-Junak D, Harasymczuk J, Hubalewska-Dydejczyk A, Januszkiewicz-Caulier J, Jarząb M, Kaczka K, Kalemba M, Kamiński G, Karbownik-Lewińska M, Kawecki A, Kluczewska-Gałka A, Kolasińska-Ćwikła A, Kołton M, Konturek A, Kos-Kudła B, Kotecka-Blicharz A, Kowalska A, Krajewska J, Kram A, Królicki L, Kukulska A, Kusiński M, Kuzdak K, Lange D, Ledwon A, Małecka-Tendera E, Mańkowski P, Migda B, Niedziela M, Oczko-Wojciechowska M, Polnik D, Pomorski L, Ruchała M, Samborski K, Skowrońska-Szcześniak A, Stanek-Widera A, Stobiecka E, Stojčev Z, Suchorzepka-Simek M, Syrenicz A, Szczepanek-Parulska E, Trofimiuk-Müldner M, Tysarowski A, Wygoda A, Zajkowska K, Zembala-Nożyńska E, Żyłka A. Diagnosis and treatment of thyroid cancer in adult patients - Recommendations of Polish Scientific Societies and the National Oncological Strategy. 2022 Update [Diagnostyka i leczenie raka tarczycy u chorych dorosłych - Rekomendacje Polskich Towarzystw Naukowych oraz Narodowej Strategii Onkologicznej. Aktualizacja na rok 2022]. Endokrynol Pol. 2022;73(2):173-300. doi: 10.5603/EP.a2022.0028. PMID: 35593680.</p>
-
+    <div>
+        References:
+        <cite>
+            <p>1. Jarząb B, Dedecjus M, Lewiński A, Adamczewski Z, Bakuła-Zalewska E, Bałdys-Waligórska A, Barczyński M, Biskup-Frużyńska M, Bobek-Billewicz B, Bossowski A, Buziak-Bereza M, Chmielik E, Czarniecka A, Czepczyński R, Ćwikła J, Dobruch-Sobczak K, Dzięcioł J, Gawlik A, Gawrychowski J, Handkiewicz-Junak D, Harasymczuk J, Hubalewska-Dydejczyk A, Januszkiewicz-Caulier J, Jarząb M, Kaczka K, Kalemba M, Kamiński G, Karbownik-Lewińska M, Kawecki A, Kluczewska-Gałka A, Kolasińska-Ćwikła A, Kołton M, Konturek A, Kos-Kudła B, Kotecka-Blicharz A, Kowalska A, Krajewska J, Kram A, Królicki L, Kukulska A, Kusiński M, Kuzdak K, Lange D, Ledwon A, Małecka-Tendera E, Mańkowski P, Migda B, Niedziela M, Oczko-Wojciechowska M, Polnik D, Pomorski L, Ruchała M, Samborski K, Skowrońska-Szcześniak A, Stanek-Widera A, Stobiecka E, Stojčev Z, Suchorzepka-Simek M, Syrenicz A, Szczepanek-Parulska E, Trofimiuk-Müldner M, Tysarowski A, Wygoda A, Zajkowska K, Zembala-Nożyńska E, Żyłka A. Diagnosis and treatment of thyroid cancer in adult patients - Recommendations of Polish Scientific Societies and the National Oncological Strategy. 2022 Update [Diagnostyka i leczenie raka tarczycy u chorych dorosłych - Rekomendacje Polskich Towarzystw Naukowych oraz Narodowej Strategii Onkologicznej. Aktualizacja na rok 2022]. Endokrynol Pol. 2022;73(2):173-300. doi: 10.5603/EP.a2022.0028. PMID: 35593680.</p>
+        </cite>
     </div>
 
     <script>
@@ -211,23 +213,23 @@ function gettext(category, type) {
 
     switch (category) {
         case 1:
-            resultText = 'Ryzyko złośliwości blisko 0.<br>BACC Tarczycy nie jest potrzebna.<br>Kontrola usg zależnie od czynników ryzyka klinicznego.';
+            resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
             break;
         case 2:
             switch (type) {
                 case 1:
-                    resultText = 'Ryzyko złośliwości blisko 0.<br>BACC Tarczycy nie jest potrzebna.<br>Wyjątek: biopsja terapeutyczna u chorych objawowych, np. opróżnienie torbieli).<br>Kontrola usg zależnie od czynników ryzyka klinicznego.';
+                    resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Wyjątek: biopsja terapeutyczna u chorych objawowych, np. opróżnienie torbieli).<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
                     break;
                 case 2:
-                    resultText = 'Ryzyko złośliwości blisko 0.<br>BACC Tarczycy nie jest potrzebna.<br>Kontrola usg zależnie od czynników ryzyka klinicznego.';
+                    resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
                     break;
             }
             break;
         case 3:
-            resultText = 'Niskie ryzyko złośliwości: 2–4%.<br>BACC Tarczycy gdy ≥ 20 mm. <br> Można rozważyć bacc przy mniejszym wymiarze zmiany.';
+            resultText = 'Niskie ryzyko złośliwości: 2–4%.<br>BACC tarczycy gdy ≥ 20 mm. <br> Można rozważyć BACC przy mniejszym wymiarze zmiany.';
             break;
         case 4:
-            resultText = 'Pośrednie ryzyko złośliwości 6–17%.<br>BACC Tarczycy gdy ≥ 15 mm. <br> Można rozważyć bacc przy mniejszym wymiarze zmiany.';
+            resultText = 'Pośrednie ryzyko złośliwości 6–17%.<br>BACC tarczycy gdy ≥ 15 mm. <br> Można rozważyć BACC przy mniejszym wymiarze zmiany.';
             break;
         case 5:
             resultText = 'Wysokie ryzyko złośliwości >26%.<br>BACC Tarczycy gdy ≥ 5 mm.';
@@ -236,6 +238,8 @@ function gettext(category, type) {
             resultText = 'Brak danych';
             break;
     }
+
+    resultText += "<br>BACC — biopsja aspiracyjna cienkoigłowa celowana"
 
     document.getElementById('result').innerHTML = resultText;
     document.getElementById('result').style.display = 'block';
