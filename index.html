@@ -111,34 +111,34 @@
             </div>
             <div class="right">
                <label>
-               <input type="checkbox" id="positive1" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('negative1')" disabled> Obecność makrozwapnień
+               <input type="checkbox" id="negative1" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive1')" disabled> Obecność makrozwapnień
                </label><br>
                <label>
-               <input type="checkbox" id="negative1" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('positive1')" disabled> Komponenta płynowa
+               <input type="checkbox" id="positive1" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative1')" disabled> Komponenta płynowa
                </label><br>
                <label>
-               <input type="checkbox" id="positive2" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('negative2')" disabled> Nieuporządkowany rysunek naczyniowy
+               <input type="checkbox" id="negative2" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive2')" disabled> Nieuporządkowany rysunek naczyniowy
                </label><br>
                <label>
-               <input type="checkbox" id="negative2" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('positive2')" disabled> Obecność jasnych ech z obecnością artefaktu ogona komety
+               <input type="checkbox" id="positive2" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative2')" disabled> Obecność jasnych ech z obecnością artefaktu ogona komety
                </label><br>
                <label>
-               <input type="checkbox" id="positive3" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('negative3')" disabled> Centralny wzorzec unaczynienia
+               <input type="checkbox" id="negative3" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive3')" disabled> Centralny wzorzec unaczynienia
                </label><br>
                <label>
-               <input type="checkbox" id="negative3" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('positive3')" disabled> Obwodowe unaczynienie
+               <input type="checkbox" id="positive3" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative3')" disabled> Obwodowe unaczynienie
                </label><br>
                <label>
-               <input type="checkbox" id="positive4" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('negative4')" disabled> Odcinkowe/nieregularne grube halo
+               <input type="checkbox" id="negative4" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive4')" disabled> Odcinkowe/nieregularne grube halo
                </label><br>
                <label>
-               <input type="checkbox" id="negative4" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('positive4')" disabled> Cienkie halo
+               <input type="checkbox" id="positive4" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative4')" disabled> Cienkie halo
                </label><br>
                <label>
-               <input type="checkbox" id="positive5" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('negative5')" disabled> Zmniejszona odkształcalność
+               <input type="checkbox" id="negative5" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive5')" disabled> Zmniejszona odkształcalność
                </label><br>
                <label>
-               <input type="checkbox" id="negative5" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('positive5')" disabled> Prawidłowa odkształcalność
+               <input type="checkbox" id="positive5" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative5')" disabled> Prawidłowa odkształcalność
                </label>
             </div>
          </div>
@@ -230,69 +230,125 @@
          }
          
          function calculateCategory() {
-             let form = document.getElementById('tiradsForm');
-             let nodule = parseFloat(form.elements['nodule'].value) || 0;
-             let shape = parseInt(form.elements['shape'].value) || 0;
-             let margins = parseInt(form.elements['margins'].value) || 0;
-         
-             let featuresElements = form.elements['features']
-             let featuresSum = 0;
-             
-             for (let i = 0; i < featuresElements.length; i++) {
-                 if (featuresElements[i].checked) {
-                     featuresSum += parseInt(featuresElements[i].value) || 0;
-                 }
-             }
-             noduleDecimalPart = parseInt(nodule % 1 * 10);
-             let totalPoints = parseInt(nodule) + shape + margins + featuresSum;
-             let category;
-         
-             if (totalPoints >= 5) {
-                 category = 5;
-             } else if (totalPoints >= 4) {
-                 category = 4;
-             } else if (totalPoints >= 3) {
-                 category = 3;
-             } else if (totalPoints >= 2) {
-                 category = 2;
-             } else {
-                 category = 1;
-             }
-         
-             document.getElementById('tiradsCategory').innerText = category;
-             document.getElementById('sum').innerText = totalPoints;
-             
-             gettext(category, noduleDecimalPart)
+            let form = document.getElementById('tiradsForm');
+            let nodule = parseFloat(form.elements['nodule'].value) || 0;
+            let shape = parseInt(form.elements['shape'].value) || 0;
+            let margins = parseInt(form.elements['margins'].value) || 0;
+      
+            let featuresElements = form.elements['features']
+            let featuresSum = 0;
+            
+            for (let i = 0; i < featuresElements.length; i++) {
+               if (featuresElements[i].checked) {
+                  featuresSum += parseInt(featuresElements[i].value) || 0;
+               }
+            }
+            let totalPoints = parseInt(nodule) + shape + margins + featuresSum;
+
+            let category;
+            if (totalPoints >= 5) {
+               category = 5;
+            } else if (totalPoints >= 4) {
+               category = 4;
+            } else if (totalPoints >= 3) {
+               category = 3;
+            } else if (totalPoints >= 2) {
+               category = 2;
+            } else {
+               category = 1;
+            }
+
+            let modifiers = form.elements['riskmodifiers']
+            let noPositiveModifiers = 0
+            let noNegativeModifiers = 0
+            for (let i = 0; i < modifiers.length; i++) {
+               if (modifiers[i].checked) {
+                  if (modifiers[i].value == "1") {
+                     noNegativeModifiers += 1
+                  }
+                  else {
+                     noPositiveModifiers += 1
+                  }
+               }
+            }
+            
+            modifyText(category, totalPoints, noPositiveModifiers, noNegativeModifiers)
          }
-         function gettext(category, type) {
-             var resultText = '';
-         
-             switch (category) {
-                 case 1:
-                     resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
+         function modifyText(category, totalPoints, noPositiveModifiers, noNegativeModifiers) {
+            document.getElementById('tiradsCategory').innerText = category;
+            document.getElementById('sum').innerText = totalPoints;
+
+            var resultText = '';
+      
+            switch (category) {
+               case 1:
+                  resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
+                  break;
+               case 2:
+                  resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Wyjątek: biopsja terapeutyczna u chorych objawowych, np. opróżnienie torbieli).<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
+                  break;
+               case 3:
+                  resultText = 'Niskie ryzyko złośliwości: 2–4%.<br>BACC tarczycy gdy ≥ 20 mm.';
+                  break;
+               case 4:
+                  resultText = 'Pośrednie ryzyko złośliwości 6–17%.<br>BACC tarczycy gdy ≥ 15 mm.';
+                  break;
+               case 5:
+                  resultText = 'Wysokie ryzyko złośliwości >26%.<br>BACC Tarczycy gdy ≥ 5 mm.';
+                  break;
+               default:
+                  resultText = 'Brak danych';
+                  break;
+            }
+
+            if (noPositiveModifiers != 0 || noNegativeModifiers != 0) {
+               resultText += "<br>Wybrano ";
+               switch (noPositiveModifiers) {
+                  case 0:
                      break;
-                 case 2:
-                     resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Wyjątek: biopsja terapeutyczna u chorych objawowych, np. opróżnienie torbieli).<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
+                  case 1:
+                     resultText += noPositiveModifiers + " cechę zmniejszającą ryzyko"
                      break;
-                 case 3:
-                     resultText = 'Niskie ryzyko złośliwości: 2–4%.<br>BACC tarczycy gdy ≥ 20 mm. <br> Można rozważyć BACC przy mniejszym wymiarze zmiany.';
+                  case 2:
+                  case 3:
+                  case 4:
+                     resultText += noPositiveModifiers + " cechy zmniejszające ryzyko";
                      break;
-                 case 4:
-                     resultText = 'Pośrednie ryzyko złośliwości 6–17%.<br>BACC tarczycy gdy ≥ 15 mm. <br> Można rozważyć BACC przy mniejszym wymiarze zmiany.';
+                  case 5: 
+                     resultText += noPositiveModifiers + " cech zmniejszających ryzyko";
                      break;
-                 case 5:
-                     resultText = 'Wysokie ryzyko złośliwości >26%.<br>BACC Tarczycy gdy ≥ 5 mm.';
+               }
+
+               if (noPositiveModifiers > 0 && noNegativeModifiers > 0) {
+                  resultText += " i "
+               }
+
+               switch (noNegativeModifiers) {
+                  case 0:
                      break;
-                 default:
-                     resultText = 'Brak danych';
+                  case 1:
+                     resultText += noNegativeModifiers + " cechę zwiększającą ryzyko"
                      break;
-             }
-         
-             resultText += "<br>BACC — biopsja aspiracyjna cienkoigłowa celowana"
-         
-             document.getElementById('result').innerHTML = resultText;
-             document.getElementById('result').style.display = 'block';
-             }
+                  case 2:
+                  case 3:
+                  case 4:
+                     resultText += noNegativeModifiers + " cechy zwiększające ryzyko";
+                     break;
+                  case 5:
+                     resultText += noNegativeModifiers + " cech zwiększających ryzyko";
+                     break;
+               }
+
+               if (noNegativeModifiers > 0) {
+                  resultText += "<br>Można rozważyć BACC przy mniejszym wymiarze zmiany."
+               }
+            }
+
+            resultText += "<br>BACC — biopsja aspiracyjna cienkoigłowa celowana"
+      
+            document.getElementById('result').innerHTML = resultText;
+            document.getElementById('result').style.display = 'block';
+            }
              
       </script>
    </body>
