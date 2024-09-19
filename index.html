@@ -83,10 +83,10 @@
             </div>
             <div class="right">
                <label>
-               <input type="radio" name="margins" value="0" checked> Granice/brzegi równe
+               <input type="radio" name="margins" value="0" disabled> Granice/brzegi równe
                </label><br>
                <label>
-               <input type="radio" name="margins" value="5"> Granice/brzegi nierówne
+               <input type="radio" name="margins" value="5" disabled> Granice/brzegi nierówne
                </label>
             </div>
          </div>
@@ -105,7 +105,7 @@
                <input type="checkbox" name="features" value="5" disabled> Ekspansja pozatarczycowa
                </label><br>
                <label>
-               <input type="checkbox" name="features" value="5" disabled> Głęboka hipoechogeniczność
+               <input type="checkbox" id="features4" name="features" value="5" disabled> Głęboka hipoechogeniczność
                </label>
             </div>
          </div>
@@ -115,10 +115,10 @@
             </div>
             <div class="right">
                <label>
-               <input type="checkbox" id="negative1" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive1')" disabled> Obecność makrozwapnień
+               <input type="checkbox" id="negative1" name="riskmodifiers" value="1" disabled> Obecność makrozwapnień
                </label><br>
                <label>
-               <input type="checkbox" id="positive1" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative1')" disabled> Komponenta płynowa
+               <input type="checkbox" id="positive1" name="riskmodifiers" value="-1" disabled> Komponenta płynowa
                </label><br>
                <label>
                <input type="checkbox" id="negative2" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive2')" disabled> Nieuporządkowany rysunek naczyniowy
@@ -191,7 +191,7 @@
                   switch (noduleOptions[i].value) {
                      case "1":
                         blockUnblockCheckboxes("shape", true, false)
-                        blockUnblockCheckboxes("margins", false, true)
+                        blockUnblockCheckboxes("margins", true, false)
                         blockUnblockCheckboxes("features", true, false)
                         blockUnblockCheckboxes("riskmodifiers", true, false)
                         break;
@@ -202,9 +202,9 @@
                         blockUnblockCheckboxes("riskmodifiers", true, false)
                         break;
                      case "2.2":
-                        blockUnblockCheckboxes("shape", false, true)
-                        blockUnblockCheckboxes("margins", false, true)
-                        blockUnblockCheckboxes("features", false, false)
+                        blockUnblockCheckboxes("shape", true, false)
+                        blockUnblockCheckboxes("margins", true, false)
+                        blockUnblockCheckboxes("features", true, false)
                         blockUnblockCheckboxes("riskmodifiers", true, false)
                         break;
                      case "3.1":
@@ -212,12 +212,14 @@
                         blockUnblockCheckboxes("margins", false, true)
                         blockUnblockCheckboxes("features", false, false)
                         blockUnblockCheckboxes("riskmodifiers", false, false)
+                        changeModifiersDisplay('features4')
                         break;
                      case "3.2":
                         blockUnblockCheckboxes("shape", false, true)
                         blockUnblockCheckboxes("margins", false, true)
                         blockUnblockCheckboxes("features", false, false)
                         blockUnblockCheckboxes("riskmodifiers", false, false)
+                        changeModifiersDisplay('features4')
                         break;
                      case "4":
                         blockUnblockCheckboxes("shape", false, true)
