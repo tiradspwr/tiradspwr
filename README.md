@@ -16,6 +16,18 @@ This calculator cannot be used as a basis for diagnostic and therapeutic decisio
 
 ### Installation
 
+#### Using Docker
+
+1. Install Docker and Docker Compose
+
+2. Run the following command to start the development server:
+
+    ```bash
+    docker compose up
+    ```
+
+### Using Node.js
+
 1. Install dependencies:
 
     ```bash
