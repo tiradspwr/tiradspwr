@@ -11,7 +11,7 @@ This calculator cannot be used as a basis for diagnostic and therapeutic decisio
 
 ### Prerequisites
 
--   Node.js (version 16.0.0 or higher)
+-   Node.js (version 22 or higher)
 -   npm (usually comes with Node.js)
 
 ### Installation
