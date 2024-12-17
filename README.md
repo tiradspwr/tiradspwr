@@ -20,11 +20,19 @@ This calculator cannot be used as a basis for diagnostic and therapeutic decisio
 
 1. Install Docker and Docker Compose
 
-2. Run the following command to start the development server:
+2. Run development server:
 
     ```bash
     docker compose up
     ```
+
+3. Run production server:
+
+    ```bash
+    docker compose -f docker-compose.prod.yml up --build
+    ```
+
+    If you want to use a different port, set the `PORT` environment variable in the `.env` file.
 
 ### Using Node.js
 
