@@ -1,0 +1,22 @@
+.warning {
+    color: red;
+}
+.centered {
+    text-align: center;
+}
+.category {
+    margin-bottom: 25px;
+    width: 100%;
+    display: flex;
+    vertical-align: top;
+}
+.left {
+    flex: 45%;
+    margin-top: -20px;
+    margin-right: 20px;
+    text-align: right;
+}
+.right {
+    flex: 55%;
+    text-align: left;
+}
