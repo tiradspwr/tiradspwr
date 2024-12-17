@@ -1,4 +1,4 @@
-# EU-TIRADS-PL Calculator
+# EU-TIRADS-PL Calculator a
 
 A web-based calculator for thyroid nodule classification using the EU-TIRADS-PL system. This tool is designed to assist medical professionals in categorizing thyroid nodules based on ultrasound characteristics.
 
