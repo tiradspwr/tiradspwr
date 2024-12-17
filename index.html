@@ -3,35 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <title>EU-TIRADS-PL Classification</title>
-      <style>
-         .warning {
-            color: red;
-         }
-         .centered {
-         text-align: center;
-         }
-         .category {
-         margin-bottom: 25px;
-         width: 100%;
-         display: flex;
-         vertical-align: top;
-         }
-         .left {
-         flex: 45%;
-         margin-top: -20px;
-         margin-right: 20px;
-         text-align: right;
-         }
-         .right {
-         flex: 55%;
-         text-align: left;
-         }
-      </style>
-      <script>
-         document.addEventListener('DOMContentLoaded', (event) => {
-             document.getElementById('tiradsForm').reset();
-         });
-      </script>
+      <link rel="stylesheet" href="./src/style.css">
    </head>
    <body>
       <h1 class="centered warning">WERSJA TESTOWA KALKULATORA</h1>
@@ -154,9 +126,9 @@
       <h3 class="centered">EU-TIRADS-PL Kategoria: <span id="tiradsCategory">1</span></h3>
       <div id="result" class="result centered" style="margin-bottom: 25px;"></div>
       <div class="centered">
-         <img src="logo-PWr.png" alt="PWr logo" width="70px">
-         <img src="logo_pse.jpeg" alt="PSE logo" width="160px">
-         <p>Made by Wiktor Sadowy & Tomasz Hałas, Department of Artificial Intelligence. Idea and Cooperation: Tomasz Tomkalski, Department of Medicine<br>© 2024 thyroID</p>
+         <img src="./logo-PWr.png" alt="PWr logo" width="70px">
+         <img src="./logo_pse.jpeg" alt="PSE logo" width="160px">
+         <p>Made by Wiktor Sadowy, Tomasz Hałas & Piotr Durniat, Department of Artificial Intelligence. Idea and Cooperation: Tomasz Tomkalski, Department of Medicine<br>© 2024 thyroID</p>
       </div>
       <div>
          References:
@@ -164,198 +136,6 @@
             <p>1. Jarząb B, Dedecjus M, Lewiński A, Adamczewski Z, Bakuła-Zalewska E, Bałdys-Waligórska A, Barczyński M, Biskup-Frużyńska M, Bobek-Billewicz B, Bossowski A, Buziak-Bereza M, Chmielik E, Czarniecka A, Czepczyński R, Ćwikła J, Dobruch-Sobczak K, Dzięcioł J, Gawlik A, Gawrychowski J, Handkiewicz-Junak D, Harasymczuk J, Hubalewska-Dydejczyk A, Januszkiewicz-Caulier J, Jarząb M, Kaczka K, Kalemba M, Kamiński G, Karbownik-Lewińska M, Kawecki A, Kluczewska-Gałka A, Kolasińska-Ćwikła A, Kołton M, Konturek A, Kos-Kudła B, Kotecka-Blicharz A, Kowalska A, Krajewska J, Kram A, Królicki L, Kukulska A, Kusiński M, Kuzdak K, Lange D, Ledwon A, Małecka-Tendera E, Mańkowski P, Migda B, Niedziela M, Oczko-Wojciechowska M, Polnik D, Pomorski L, Ruchała M, Samborski K, Skowrońska-Szcześniak A, Stanek-Widera A, Stobiecka E, Stojčev Z, Suchorzepka-Simek M, Syrenicz A, Szczepanek-Parulska E, Trofimiuk-Müldner M, Tysarowski A, Wygoda A, Zajkowska K, Zembala-Nożyńska E, Żyłka A. Diagnosis and treatment of thyroid cancer in adult patients - Recommendations of Polish Scientific Societies and the National Oncological Strategy. 2022 Update [Diagnostyka i leczenie raka tarczycy u chorych dorosłych - Rekomendacje Polskich Towarzystw Naukowych oraz Narodowej Strategii Onkologicznej. Aktualizacja na rok 2022]. Endokrynol Pol. 2022;73(2):173-300. doi: 10.5603/EP.a2022.0028. PMID: 35593680.</p>
          </cite>
       </div>
-      <script>
-         function changeModifiersDisplay(idToChange) {
-            let modifier = document.getElementById(idToChange);
-            modifier.disabled = !modifier.disabled;
-         }
-
-         function blockUnblockCheckboxes(elementName, disable, checkFirstElement) {
-            let form = document.getElementById('tiradsForm');
-            let checkboxes = form.elements[elementName]
-      
-            for (var i = 0; i < checkboxes.length; i++) {
-               checkboxes[i].disabled = disable;
-               checkboxes[i].checked = false;
-            }
-
-            if (checkFirstElement) {
-               checkboxes[0].checked = true;
-            }
-         }
-
-         function changeDisplay() {
-             var noduleOptions = document.getElementsByName("nodule");
-             for (var i = 0; i < noduleOptions.length; i++) {
-               if (noduleOptions[i].checked) {
-                  switch (noduleOptions[i].value) {
-                     case "1":
-                        blockUnblockCheckboxes("shape", true, false)
-                        blockUnblockCheckboxes("margins", true, false)
-                        blockUnblockCheckboxes("features", true, false)
-                        blockUnblockCheckboxes("riskmodifiers", true, false)
-                        break;
-                     case "2.1":
-                        blockUnblockCheckboxes("shape", false, true)
-                        blockUnblockCheckboxes("margins", false, true)
-                        blockUnblockCheckboxes("features", true, false)
-                        blockUnblockCheckboxes("riskmodifiers", true, false)
-                        break;
-                     case "2.2":
-                        blockUnblockCheckboxes("shape", true, false)
-                        blockUnblockCheckboxes("margins", true, false)
-                        blockUnblockCheckboxes("features", true, false)
-                        blockUnblockCheckboxes("riskmodifiers", true, false)
-                        break;
-                     case "3.1":
-                        blockUnblockCheckboxes("shape", false, true)
-                        blockUnblockCheckboxes("margins", false, true)
-                        blockUnblockCheckboxes("features", false, false)
-                        blockUnblockCheckboxes("riskmodifiers", false, false)
-                        changeModifiersDisplay('features4')
-                        break;
-                     case "3.2":
-                        blockUnblockCheckboxes("shape", false, true)
-                        blockUnblockCheckboxes("margins", false, true)
-                        blockUnblockCheckboxes("features", false, false)
-                        blockUnblockCheckboxes("riskmodifiers", false, false)
-                        changeModifiersDisplay('features4')
-                        break;
-                     case "4":
-                        blockUnblockCheckboxes("shape", false, true)
-                        blockUnblockCheckboxes("margins", false, true)
-                        blockUnblockCheckboxes("features", false, false)
-                        blockUnblockCheckboxes("riskmodifiers", false, false)
-                        break;
-                     default:
-                        break;
-                  }
-                  break;
-               }
-             }
-         }
-         
-         function calculateCategory() {
-            let form = document.getElementById('tiradsForm');
-            let nodule = parseFloat(form.elements['nodule'].value) || 0;
-            let shape = parseInt(form.elements['shape'].value) || 0;
-            let margins = parseInt(form.elements['margins'].value) || 0;
-      
-            let featuresElements = form.elements['features']
-            let featuresSum = 0;
-            
-            for (let i = 0; i < featuresElements.length; i++) {
-               if (featuresElements[i].checked) {
-                  featuresSum += parseInt(featuresElements[i].value) || 0;
-               }
-            }
-            let totalPoints = parseInt(nodule) + shape + margins + featuresSum;
-
-            let category;
-            if (totalPoints >= 5) {
-               category = 5;
-            } else if (totalPoints >= 4) {
-               category = 4;
-            } else if (totalPoints >= 3) {
-               category = 3;
-            } else if (totalPoints >= 2) {
-               category = 2;
-            } else {
-               category = 1;
-            }
-
-            let modifiers = form.elements['riskmodifiers']
-            let noPositiveModifiers = 0
-            let noNegativeModifiers = 0
-            for (let i = 0; i < modifiers.length; i++) {
-               if (modifiers[i].checked) {
-                  if (modifiers[i].value == "1") {
-                     noNegativeModifiers += 1
-                  }
-                  else {
-                     noPositiveModifiers += 1
-                  }
-               }
-            }
-            
-            modifyText(category, totalPoints, noPositiveModifiers, noNegativeModifiers)
-         }
-         function modifyText(category, totalPoints, noPositiveModifiers, noNegativeModifiers) {
-            document.getElementById('tiradsCategory').innerText = category;
-            document.getElementById('sum').innerText = totalPoints;
-
-            var resultText = '';
-      
-            switch (category) {
-               case 1:
-                  resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
-                  break;
-               case 2:
-                  resultText = 'Ryzyko złośliwości bliskie 0%.<br>BACC tarczycy niezalecana.<br>Wyjątek: biopsja terapeutyczna u chorych objawowych, np. opróżnienie torbieli).<br>Kontrola USG w zależności od czynników ryzyka klinicznego.';
-                  break;
-               case 3:
-                  resultText = 'Niskie ryzyko złośliwości: 2–4%.<br>BACC tarczycy gdy ≥ 20 mm.';
-                  break;
-               case 4:
-                  resultText = 'Pośrednie ryzyko złośliwości 6–17%.<br>BACC tarczycy gdy ≥ 15 mm.';
-                  break;
-               case 5:
-                  resultText = 'Wysokie ryzyko złośliwości >26%.<br>BACC Tarczycy gdy ≥ 5 mm.';
-                  break;
-               default:
-                  resultText = 'Brak danych';
-                  break;
-            }
-
-            if (noPositiveModifiers != 0 || noNegativeModifiers != 0) {
-               resultText += "<br>Wybrano ";
-               switch (noPositiveModifiers) {
-                  case 0:
-                     break;
-                  case 1:
-                     resultText += noPositiveModifiers + " cechę zmniejszającą ryzyko"
-                     break;
-                  case 2:
-                  case 3:
-                  case 4:
-                     resultText += noPositiveModifiers + " cechy zmniejszające ryzyko";
-                     break;
-                  case 5: 
-                     resultText += noPositiveModifiers + " cech zmniejszających ryzyko";
-                     break;
-               }
-
-               if (noPositiveModifiers > 0 && noNegativeModifiers > 0) {
-                  resultText += " i "
-               }
-
-               switch (noNegativeModifiers) {
-                  case 0:
-                     break;
-                  case 1:
-                     resultText += noNegativeModifiers + " cechę zwiększającą ryzyko"
-                     break;
-                  case 2:
-                  case 3:
-                  case 4:
-                     resultText += noNegativeModifiers + " cechy zwiększające ryzyko";
-                     break;
-                  case 5:
-                     resultText += noNegativeModifiers + " cech zwiększających ryzyko";
-                     break;
-               }
-
-               if (noNegativeModifiers > 0) {
-                  resultText += "<br>Można rozważyć BACC przy mniejszym wymiarze zmiany."
-               }
-            }
-
-            resultText += "<br>BACC — biopsja aspiracyjna cienkoigłowa celowana"
-      
-            document.getElementById('result').innerHTML = resultText;
-            document.getElementById('result').style.display = 'block';
-            }
-             
-      </script>
+      <script type="module" src="./src/main.js"></script>
    </body>
 </html>
