@@ -4,6 +4,16 @@
       <meta charset="UTF-8">
       <title>EU-TIRADS-PL Classification</title>
       <link rel="stylesheet" href="./src/style.css">
+      <script type="module" src="./src/main.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+      <style>
+         body {
+            font-family: 'Source Sans 3', sans-serif;
+         }
+      </style>
+
+
    </head>
    <body>
       <h1 class="centered warning">WERSJA TESTOWA KALKULATORA</h1>
@@ -121,6 +131,10 @@
          <div class="centered">
             <button type="button" onclick="calculateCategory()">Oblicz kategorię</button>
          </div>
+         <p class="centered warning" style="font-size: 1rem; margin-top: 10px;">
+            Niniejszy kalkulator stanowi narzędzie pomocnicze - ostateczną decyzję należy podjąć po zapoznaniu się z rekomendacjami.
+         </p>
+         
       </form>
       <h3 class="centered">Suma punktów: <span id="sum">0</span></h3>
       <h3 class="centered">EU-TIRADS-PL Kategoria: <span id="tiradsCategory">1</span></h3>
