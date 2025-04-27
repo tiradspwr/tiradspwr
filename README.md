@@ -65,4 +65,4 @@ This calculator cannot be used as a basis for diagnostic and therapeutic decisio
 -   Wiktor Sadowy - Department of Artificial Intelligence
 -   Tomasz Hałas - Department of Artificial Intelligence
 -   Piotr Durniat - Department of Artificial Intelligence
--   Tomasz Tomkalski - Department of Medicine (Idea and Cooperation)
+-   Tomasz Tomkalski - Faculty of Medicine (Idea and Cooperation)
