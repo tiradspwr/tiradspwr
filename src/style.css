@@ -1,3 +1,7 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .warning {
     color: red;
 }
@@ -35,14 +39,32 @@ button:hover {
     background-color: #005fa3;
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 12px;
+    margin-bottom: 5px;
+}
+
+label {
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
 
 @media screen and (max-width: 768px) {
-
     input[type="checkbox"],
     input[type="radio"] {
         transform: scale(1.6);
         margin-right: 12px;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
         cursor: pointer;
     }
     
