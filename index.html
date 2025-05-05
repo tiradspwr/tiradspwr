@@ -16,130 +16,142 @@
 
    </head>
    <body>
+      <h1 class="centered warning">WERSJA TESTOWA KALKULATORA</h1>
+      <h2 class="centered warning">Nie może stanowić podstawy do podejmowania decyzji diagnostyczno-terapeutycznych</h2>
       <h1 class="centered">EU-TIRADS-PL</h1>
+      <div class="centered">
+        <img src="./logo-PWr.png" alt="PWr logo" height="120px">
+        <img src="./KSI_logo_color_h_pol_med.png" alt="KSI logo" height="120px">
+        <img src="./w14_logo.jpg" alt="W14 logo" height="120px">
+        <p>Made by Wiktor Sadowy, Tomasz Hałas & Piotr Durniat, Department of Artificial Intelligence. Idea and Cooperation: Tomasz Tomkalski, Faculty of Medicine<br>© 2025 thyroID</p>
+     </div>
       <h2 class="centered">Klasyfikacja Guzków Tarczycy</h2>
-      <h2 class="centered warning">Niniejszy kalkulator stanowi narzędzie pomocnicze, ostateczną decyzję należy podjąć po zapoznaniu się z rekomendacjami</h2>
-      <form id="tiradsForm">
-         <div class="category">
-            <div class="left">
+      <form id="tiradsForm" class="form-container">
+         <!-- Tarczyca -->
+         <div class="form-group">
+            <div class="form-group-label"> 
                <h3>Tarczyca</h3>
             </div>
-            <div class="right">
-               <label>
+             <label>
                <input type="radio" name="nodule" value="1" onclick="changeDisplay()" checked> Tarczyca bez zmian ogniskowych
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="radio" name="nodule" value="2.1" onclick="changeDisplay()"> Zmiana ogniskowa bezechowa płynowa
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="radio" name="nodule" value="2.2" onclick="changeDisplay()"> Zmiana ogniskowa o strukturze gąbczastej typu „plastra miodu”
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="radio" name="nodule" value="3.1" onclick="changeDisplay()"> Zmiana ogniskowa normoechogeniczna
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="radio" name="nodule" value="3.2" onclick="changeDisplay()"> Zmiana ogniskowa hiperechogeniczna
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="radio" name="nodule" value="4" onclick="changeDisplay()"> Zmiana ogniskowa hipoechogeniczna
-               </label>
-            </div>
+             </label>
+           </div>
          </div>
-         <div class="category">
-            <div class="left">
+       
+         <!-- Kształt -->
+         <div class="form-group">
+            <div class="form-group-label"> 
                <h3>Kształt</h3>
             </div>
-            <div class="right">
-               <label>
+             <label>
                <input type="radio" name="shape" value="0" disabled> Kształt owalny lub okrągły
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="radio" name="shape" value="5" disabled> Kształt nieregularny
-               </label>
-            </div>
+             </label>
+           </div>
          </div>
-         <div class="category">
-            <div class="left">
+       
+         <!-- Margines -->
+         <div class="form-group">
+            <div class="form-group-label"> 
                <h3>Margines</h3>
             </div>
-            <div class="right">
-               <label>
+             <label>
                <input type="radio" name="margins" value="0" disabled> Granice/brzegi równe
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="radio" name="margins" value="5" disabled> Granice/brzegi nierówne
-               </label>
-            </div>
+             </label>
+           </div>
          </div>
-         <div class="category">
-            <div class="left">
+       
+         <!-- Dodatkowe cechy -->
+         <div class="form-group">
+            <div class="form-group-label"> 
                <h3>Dodatkowe cechy</h3>
             </div>
-            <div class="right">
-               <label>
+             <label>
                <input type="checkbox" name="features" value="5" disabled> Orientacja nierównoległa
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" name="features" value="5" disabled> Mikrozwapnienia
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" name="features" value="5" disabled> Ekspansja pozatarczycowa
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="features4" name="features" value="5" disabled> Głęboka hipoechogeniczność
-               </label>
-            </div>
+             </label>
+           </div>
          </div>
-         <div class="category">
-            <div class="left">
+       
+         <!-- Cechy modyfikujące ryzyko -->
+         <div class="form-group">
+            <div class="form-group-label"> 
                <h3>Cechy modyfikujące ryzyko</h3>
             </div>
-            <div class="right">
-               <label>
+             <label>
                <input type="checkbox" id="negative1" name="riskmodifiers" value="1" disabled> Obecność makrozwapnień
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="positive1" name="riskmodifiers" value="-1" disabled> Komponenta płynowa
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="negative2" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive2')" disabled> Nieuporządkowany rysunek naczyniowy
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="positive2" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative2')" disabled> Obecność jasnych ech z obecnością artefaktu ogona komety
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="negative3" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive3')" disabled> Centralny wzorzec unaczynienia
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="positive3" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative3')" disabled> Obwodowe unaczynienie
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="negative4" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive4')" disabled> Odcinkowe/nieregularne grube halo
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="positive4" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative4')" disabled> Cienkie halo
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="negative5" name="riskmodifiers" value="1" onclick="changeModifiersDisplay('positive5')" disabled> Zmniejszona odkształcalność
-               </label><br>
-               <label>
+             </label><br>
+             <label>
                <input type="checkbox" id="positive5" name="riskmodifiers" value="-1" onclick="changeModifiersDisplay('negative5')" disabled> Prawidłowa odkształcalność
-               </label>
-            </div>
+             </label>
+           </div>
          </div>
-         <div class="centered">
-            <button type="button" onclick="calculateCategory()">Oblicz kategorię</button>
-         </div>
-      </form>
+       </form>
+      
+      <!-- Button -->
+      <div class="centered">
+         <button type="button" onclick="calculateCategory()">Oblicz kategorię</button>
+      </div>
+      
+         <!-- Warning text -->
+      <p class="centered warning" style="font-size: 1rem; margin-top: 10px;">
+         Niniejszy kalkulator stanowi narzędzie pomocnicze - ostateczną decyzję należy podjąć po zapoznaniu się z rekomendacjami.
+      </p>
       <h3 class="centered">Suma punktów: <span id="sum">0</span></h3>
       <h3 class="centered">EU-TIRADS-PL Kategoria: <span id="tiradsCategory">1</span></h3>
       <div id="result" class="result centered" style="margin-bottom: 25px;"></div>
-      <div class="centered">
-         <img src="./logo-PWr.png" alt="PWr logo" height="120px">
-         <img src="./KSI_logo_color_h_pol_med.png" alt="KSI logo" height="120px">
-         <img src="./w14_logo.jpg" alt="W14 logo" height="120px">
-         <p>Made by Wiktor Sadowy, Tomasz Hałas & Piotr Durniat, Department of Artificial Intelligence. Idea and Cooperation: Tomasz Tomkalski, Faculty of Medicine<br>© 2025 thyroID</p>
-      </div>
       <div>
          References:
          <cite>
