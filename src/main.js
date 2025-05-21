@@ -33,8 +33,8 @@ window.changeDisplay = function () {
                     blockUnblockCheckboxes("riskmodifiers", true, false);
                     break;
                 case "2.1":
-                    blockUnblockCheckboxes("shape", false, true);
-                    blockUnblockCheckboxes("margins", false, true);
+                    blockUnblockCheckboxes("shape", true, false);
+                    blockUnblockCheckboxes("margins", true, false);
                     blockUnblockCheckboxes("features", true, false);
                     blockUnblockCheckboxes("riskmodifiers", true, false);
                     break;
